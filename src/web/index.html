@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>La Octava Vecindad</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="images/logo.PNG" alt="Logo Vecindad">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#" id="inicio-link" class="active">Inicio</a></li>
+            <li><a href="#" id="administrar-link">Administrar</a></li>
+            <li><a href="#" id="base-datos-link">Base de datos</a></li>
+        </ul>
+    </nav>
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="">
+    </div>
+</header>
+
+<div class="container">
+    <div class="main-content" id="content-area">
+        <div class="title">
+            <div class="subtitle">La Octava</div>
+            <div class="main-title">Vecindad</div>
+        </div>
+        <a href="#" class="button" id="action-button">Administrar</a>
+        <div class="family-image">
+            <img src="images/feliz.jpg" alt="Familia feliz">
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="motto">La transparencia es nuestra principal arma</div>
+        <div class="chart">
+            <div class="chart-line"></div>
+            <img src="images/Captura.PNG" alt="">
+        </div>
+        <a href="#" class="button">Finanzas</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const inicioLink = document.getElementById('inicio-link');
+        const administrarLink = document.getElementById('administrar-link');
+        const baseDatosLink = document.getElementById('base-datos-link');
+        const contentArea = document.getElementById('content-area');
+        const actionButton = document.getElementById('action-button');
+
+        function resetActiveLinks() {
+            inicioLink.classList.remove('active');
+            administrarLink.classList.remove('active');
+            baseDatosLink.classList.remove('active');
+        }
+
+        inicioLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            resetActiveLinks();
+            inicioLink.classList.add('active');
+            contentArea.innerHTML = `
+                <div class="title">
+                    <div class="subtitle">La Octava</div>
+                    <div class="main-title">Vecindad</div>
+                </div>
+                <a href="#" class="button">Inicio</a>
+                <div class="family-image">
+                    <img src="images/feliz.jpg" alt="Familia feliz">
+                </div>
+            `;
+            actionButton.textContent = 'Inicio';
+        });
+
+        administrarLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            resetActiveLinks();
+            administrarLink.classList.add('active');
+            contentArea.innerHTML = `
+                <div class="title">
+                    <div class="subtitle">La Octava</div>
+                    <div class="main-title">Registro de Apartamento</div>
+                </div>
+                <form action="registro" method="post" class="formulario-apto">
+                    <label>N° Apto: <input name="numero" type="number" required></label><br>
+                    <label>Dueño: <input name="dueno" type="text" required></label><br>
+                    <label>Inquilino: <input name="inquilino" type="text" required></label><br>
+                    <label>Adultos: <input name="adultos" type="number" required></label><br>
+                    <label>Niños: <input name="ninos" type="number" required></label><br>
+                    <label>Aseo: <input name="aseo" type="number" required></label><br>
+                    <label>Descuento: <input name="descuento" type="number" required></label><br>
+                    <button type="submit" class="button">Registrar</button>
+                </form>
+            `;
+            actionButton.textContent = 'Administrar';
+        });
+
+        baseDatosLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            resetActiveLinks();
+            baseDatosLink.classList.add('active');
+            contentArea.innerHTML = `
+                <div class="title">
+                    <div class="subtitle">La Octava</div>
+                    <div class="main-title">Base de Datos</div>
+                    <p>⚠ Esta tabla es estática. Integraremos datos reales desde el backend en el futuro.</p>
+                </div>
+            `;
+            actionButton.textContent = 'Base de datos';
+        });
+    });
+</script>
+</body>
+</html>
